@@ -28,6 +28,18 @@ public class Tests {
     }
 
     @Test
+    public void CambiarPrecioItemEnOperacionDeEgresoNoCerrada(){
+        OperacionDeEgreso operacionDeEgreso = new OperacionDeEgreso();
+        Item item1 = new Item(operacionDeEgreso,7);
+        try {
+            item1.setPrecio(20);
+        }catch (BusinessException e){
+            System.out.println(e.getMessage());
+        }
+        Assert.assertEquals(20,item1.getPrecio(),0.001);
+    }
+
+    @Test
     public void CambiarPrecioItemEnOperacionDeEgresoCerrada(){
         OperacionDeEgreso operacionDeEgreso = new OperacionDeEgreso();
         Item item1 = new Item(operacionDeEgreso,7);
